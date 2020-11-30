@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e+sbn+=eb7o=k*xe&vo19!$07ut^g6pr3e+*$b6gp-e_wm*83g'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'nestedSerializers.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# Make sure to run the env script from parent folder to set DB_USERNAME and DB_PASSWORD!
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

@@ -1,4 +1,4 @@
-from .models import Author,Book
+from nsApp.models import Author,Book
 from rest_framework import serializers
 
 class BookSerializer(serializers.ModelSerializer):
