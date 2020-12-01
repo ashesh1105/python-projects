@@ -6,6 +6,9 @@
 from nsApp.models import Author,Book
 from nsApp.serializers import AuthorSerializer,BookSerializer
 from rest_framework import generics
+# Below import not needed since we are adding the same at project level now
+# from rest_framework.authentication import BasicAuthentication
+# from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 
 # Create your views here.
 # Author view
@@ -20,6 +23,9 @@ class AuthorViewSet(viewsets.ModelViewSet):
 class AuthorListView(generics.ListCreateAPIView):
     queryset=Author.objects.all()
     serializer_class = AuthorSerializer
+    # Below import not needed since we are adding the same at project level now
+    # authentication_classes=[BasicAuthentication]
+    # permission_classes=[IsAuthenticated,DjangoModelPermissions]
 
 class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset=Author.objects.all()

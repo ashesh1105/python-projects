@@ -2,6 +2,10 @@ from django.shortcuts import render
 from cbvApp.models import Student
 from cbvApp.serializers import StudentSerializer
 from rest_framework import viewsets
+from rest_framework.pagination import PageNumberPagination
+# Use LimitOffsetPagination and set it to pagination_class variable if you want to have limit and offset.
+# By default it will take the limit to be the PAGE_SIZE defined on project level in settings.py
+# from rest_framework.pagination import LimitOffsetPagination
 
 # Below import is not needed since we are using viewsets now!
 # from rest_framework import generics
@@ -15,6 +19,10 @@ from rest_framework import viewsets
 # from rest_framework.views import APIView
 # from django.http import Http404
 
+# Custom Pagination class
+class StudentPaginationClass(PageNumberPagination):
+    page_size=3
+
 # viewsets simplify our code for ReSTful APIs even more than generics or mixins do!
 # Both primary_key and non-primary_key based operations can now be supported with just one class
 # below and that too with just 2 lines of code in it!!
@@ -22,6 +30,9 @@ from rest_framework import viewsets
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    # Set below to LimitOffsetPagination if you want to have limit and offset defined
+    # Set below to be built-in PageNumberPagination class if you're happy with what Django provides
+    pagination_class = StudentPaginationClass  # Your own pagination class
 
 '''
 Django Rest Framework (DRF) Generics:
