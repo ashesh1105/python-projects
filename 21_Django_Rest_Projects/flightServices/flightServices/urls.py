@@ -26,4 +26,7 @@ router.register('reservations', views.ReservationViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('flightServices/', include(router.urls)),
+    # For custome endpoints, we can't use Router, we need to configure them like below:
+    path('flightServices/findFlights/', views.find_flights),
+    path('flightServices/saveReservations/', views.save_reservation),
 ]

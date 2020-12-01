@@ -17,6 +17,8 @@ class Passenger(models.Model):
     phoneNumber=models.CharField(max_length=10)
 
 class Reservation(models.Model):
+    # Between Flights and Reservation we have OneToMany relationship, which can be specified by declaring Flight
+    # as ForeignKey in this class!
     # If flight itself gets deleted, we want reservation to be deleted as well
-    flight = models.OneToOneField(Flight,on_delete=models.CASCADE)
+    flight = models.ForeignKey(Flight,on_delete=models.CASCADE)
     passenger = models.OneToOneField(Passenger,on_delete=models.CASCADE)
