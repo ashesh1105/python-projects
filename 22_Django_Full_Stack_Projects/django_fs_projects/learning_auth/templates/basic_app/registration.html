@@ -1,0 +1,22 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="jumbotron">
+  {% if registered %}
+    <h1>Thank you for registering!</h1>
+  {% else %}
+    <h1>Register here!</h1>
+    <h3>Fill out the form!</h3>
+
+    <!-- We need enctype on form since user will be uploading media files -->
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <!-- These variables will be defined within the context under views -->
+      <!-- NOTE!! the tag below start and end with <curly_brace><curly_brace> and not <curly_brace><percentage>!!! -->
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" name="" value="Register">
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

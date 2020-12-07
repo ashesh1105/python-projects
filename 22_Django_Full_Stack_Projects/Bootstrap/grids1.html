@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Navbars</title>
+  <!-- Use below version of Bootstrap which author is also using -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <style>
+    .boxy{
+      background: #b3ddff;
+      border: 2px solid black;
+      text-align: center;
+    }
+  </style>
+
+  <!-- As we begin to collapse browser window side ways, simulating smaller size screen, -->
+  <!-- For Large Screens - collapses first -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 boxy">COL Large 4</div>
+      <div class="col-lg-4 boxy">COL Large 4</div>
+      <div class="col-lg-4 boxy">COL Large 4</div>
+    </div>
+  </div>
+
+  <!-- For Medium Size Screens - collapses next -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 boxy">COL Medium 6</div>
+      <div class="col-md-6 boxy">COL Medium 6</div>
+    </div>
+  </div>
+
+  <!-- For Small Size Screens - collapses next -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 boxy">COL Small 6</div>
+      <div class="col-sm-6 boxy">COL Small 6</div>
+    </div>
+  </div>
+
+  <!-- For Extra Small Screens - Never collapses!! -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 boxy">COL Extra Small 6</div>
+      <div class="col-xs-6 boxy">COL Extra Small 6</div>
+    </div>
+  </div>
+
+  <!-- Below is an example where for large screens each divs take 3 columns and smaller ones each take 6 of them!-->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 boxy">ONE</div>
+      <div class="col-lg-3 col-sm-6 boxy">TWO</div>
+      <div class="col-lg-3 col-sm-6 boxy">THREE</div>
+      <div class="col-lg-3 col-sm-6 boxy">FOUR</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

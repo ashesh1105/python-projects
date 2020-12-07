@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome to relative url templates!</h1>
+    <!-- Make sure to set app_name = 'basic_app' in urls.py file before running below! -->
+    <!-- left side needs to match app_name = 'basic_app' and right side is the name you define in url mapping -->
+    <a href="{% url 'basic_app:other' %}">The Other Page</a><br>
+
+    <!-- Since we know admin is one of the installed apps by Django itself and it has a view named: index -->
+    <!-- Make sure to do db migration before running below! -->
+    <a href="{% url 'admin:index' %}">The Admin Page</a><br>
+
+    <!-- Notice, how we redirect to index page that has r'^$' in the urlpatterns!! Basically no url and no colon, just the view name needed here! -->
+    <a href="{% url 'index' %}">Home Page</a>
+  </body>
+</html>

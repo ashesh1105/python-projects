@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Navbars</title>
+  <!-- Use below version of Bootstrap which author is also using -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <style>
+    .boxy{
+      background: #b3ddff;
+      border: 2px solid black;
+      text-align: center;
+    }
+  </style>
+
+  <!-- Nesting rows. In below, TOP LEVEL takes 6 columns and other 6 gets divided between two divs before -->
+  <!-- class="row" helps devide the space into further number of columns! -->
+  <div class="row">
+    <div class="col-lg-6 boxy">
+      <div class="row">
+        <div class="col-lg-6 boxy">NEST ONE</div>
+        <div class="col-lg-6 boxy">NEST TWO</div>
+      </div>
+    </div>
+    <div class="col-lg-6 boxy">TOP LEVEL</div>
+  </div>
+
+</body>
+
+</html>

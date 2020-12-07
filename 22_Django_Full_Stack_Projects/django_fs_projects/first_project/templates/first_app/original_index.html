@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- Below used to be <curly_brace><percentage_sign> load staticfiles <percentage_sign><curly_brace> prior to Django 3.0 -->
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django App Page</title>
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+  </head>
+  <body>
+    <h1>Hello, this is Django Logo!</h1>
+    <img src="{% static "images/Django.jpg" %}" alt="Uh Oh, didn't show up!">
+  </body>
+</html>

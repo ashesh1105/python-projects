@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html" %}
+  {% block body_block %}
+    <h1>Welcome to INDEX</h1>
+
+    <!-- Built-in template filter example, this will change hello world! text to upper case! -->
+    <h2>{{ text|upper }}</h2>
+
+    <!-- Another built-in template filter example - this will add 100 to the value on key - 'number' coming from view -->
+    <h2>{{ number|add:"100" }}</h2>
+
+    <!-- Now, this is our custom template filter example, we created our own filter under <app_name> -> templatetags folder  -->
+    <!-- Our filter - cut will remove the string arguments we pass from string coming from view. So it will print just the "hello !" -->
+    <h2>{{ text|cut:'world' }}</h2>
+
+  {% endblock %}
