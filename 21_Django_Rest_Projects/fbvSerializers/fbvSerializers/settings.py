@@ -77,11 +77,18 @@ WSGI_APPLICATION = 'fbvSerializers.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'python_student_db',
+    #     'USER': os.environ['DB_USERNAME'],
+    #     'PASSWORD': os.environ['DB_PASSWORD'],
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'python_student_db',
-        'USER': os.environ['DB_USERNAME'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'USER': "",
+        'PASSWORD': "",
     }
 }
 
