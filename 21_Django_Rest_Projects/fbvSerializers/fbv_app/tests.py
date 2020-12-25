@@ -1,5 +1,5 @@
 from django.test import TestCase
-from fbvApp.models import Student
+from fbv_app.models import Student
 
 # Create your tests here.
 class StudentTestCase(TestCase):

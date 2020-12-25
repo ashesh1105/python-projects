@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from fbvApp.models import Student
+from fbv_app.models import Student
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
