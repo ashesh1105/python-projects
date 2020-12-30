@@ -13,7 +13,8 @@ def employeeView(request):
     data = Employee.objects.all();
 
     # Since data is a query set, we need to convert it into a dictionary to return it
-    response = {'employees': list(data.values('id','name','sal'))}  # let's not send id to UI
+    # We can chose not send one ore more columns like id to UI
+    response = {'employees': list(data.values('id','name','sal'))}
 
     # return JsonResponse(emp)
     return JsonResponse(response)

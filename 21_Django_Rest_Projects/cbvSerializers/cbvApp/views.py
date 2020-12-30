@@ -75,7 +75,7 @@ class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
 # Mixin example. Although using generics (above) is much better as they help keep code DRY even more!
 # Class for non-primary-key based operations
 '''
-class StudentList(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
+class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
@@ -101,7 +101,7 @@ class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.D
 
 # Since we're using mixins (above), we no longer need to write so much code for various models. For example, we provide
 # serializer once for non-primary-key or primary_key based operations (classes) and DRF (Django Rest Framework) can
-# reuse the serializer for variaous methods in the class, like get, post, etc. Also, we do not need to manually
+# reuse the serializer for various methods in the class, like get, post, etc. Also, we do not need to manually
 # save the data, DRF does it for us, all we need to do is invoke the action methods that come with mixins classes we
 # inherit the two classes from, like ListModelMixin, RetrieveModelMixin, etc.!
 '''
@@ -125,16 +125,7 @@ class StudentList(APIView):
 class StudentDetail(APIView):
 
     # Since in Class Based View, we do not have a method like student_detail() in Function Based View
-    # Below built in method comes handy for us to grab the object based on Primary Key!
-    def get_object(self,pk):
-        try:
-            student = Student.objects.get(pk=pk)
-            return student
-        except Student.DoesNotExist:
-            # You can simply raise the exception once you import it!
-            # return Response(status=status.HTTP_404_NOT_FOUND)
-            raise Http404
-
+    # Below built-in method comes handy for us to grab the object based on Primary Key!
     def get(self,request,pk):
         # You can now use the get_object method above to grab the object!
         student = self.get_object(pk)
@@ -153,4 +144,13 @@ class StudentDetail(APIView):
         student = self.get_object(pk)
         student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+        
+    def get_object(self,pk):
+        try:
+            student = Student.objects.get(pk=pk)
+            return student
+        except Student.DoesNotExist:
+            # You can simply raise the exception once you import it!
+            # return Response(status=status.HTTP_404_NOT_FOUND)
+            raise Http404
 '''
