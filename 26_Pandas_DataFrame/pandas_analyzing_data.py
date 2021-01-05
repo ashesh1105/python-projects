@@ -36,3 +36,7 @@ Prints a lot of useful info about our data, like number of columns, rows, column
   None
 """
 
+# This is how we get occurrence %age of one or more column data combinations
+print('%age of occurrences of Duration and Pulse value combinations:')
+print(df[['Duration', 'Pulse']].value_counts(normalize=True).head(20))
+

@@ -20,14 +20,14 @@ from rest_framework.routers import DefaultRouter
 
 # Below is needed if you use view sets. Create and Register Router
 # Forward slash is not needed with 'students'. DRF adds it.
-router = DefaultRouter()
-router.register('students',views.StudentViewSet)
+# router = DefaultRouter()
+# router.register('students', views.StudentViewSet)
 
 urlpatterns = [
     # Router has a property - urls, that take care of all the endpoints for our model object!
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
     # Below are not needed if you use viewsets!
-    # path('admin/', admin.site.urls),
-    # path('students/', views.StudentList.as_view()),
-    # path('students/<int:pk>', views.StudentDetail.as_view()),
+    path('admin/', admin.site.urls),
+    path('students/', views.StudentList.as_view()),
+    path('students/<int:pk>', views.StudentDetail.as_view()),
 ]

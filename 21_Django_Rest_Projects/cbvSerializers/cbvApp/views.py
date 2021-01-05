@@ -14,25 +14,25 @@ from rest_framework.pagination import PageNumberPagination
 # from rest_framework import mixins
 
 # Below imports were not needed since we started using mixins!
-# from rest_framework.response import Response
-# from rest_framework import status
-# from rest_framework.views import APIView
-# from django.http import Http404
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.views import APIView
+from django.http import Http404
 
 # Custom Pagination class
-class StudentPaginationClass(PageNumberPagination):
-    page_size=3
+# class StudentPaginationClass(PageNumberPagination):
+#     page_size=3
 
 # viewsets simplify our code for ReSTful APIs even more than generics or mixins do!
 # Both primary_key and non-primary_key based operations can now be supported with just one class
 # below and that too with just 2 lines of code in it!!
 # With viewsets, we do need to configure Routes, so urls.py now look different! Check it out!
-class StudentViewSet(viewsets.ModelViewSet):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentViewSet(viewsets.ModelViewSet):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
     # Set below to LimitOffsetPagination if you want to have limit and offset defined
     # Set below to be built-in PageNumberPagination class if you're happy with what Django provides
-    pagination_class = StudentPaginationClass  # Your own pagination class
+    # pagination_class = StudentPaginationClass  # Your own pagination class
 
 '''
 Django Rest Framework (DRF) Generics:
@@ -104,29 +104,35 @@ class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.D
 # reuse the serializer for various methods in the class, like get, post, etc. Also, we do not need to manually
 # save the data, DRF does it for us, all we need to do is invoke the action methods that come with mixins classes we
 # inherit the two classes from, like ListModelMixin, RetrieveModelMixin, etc.!
-'''
+
 # Create your views here.
 class StudentList(APIView):
 
     def get(self,request):
+
+        print(f'Inside get method in StudentList')
+
         students = Student.objects.all()
         serializer = StudentSerializer(students, many=True)
         return Response(serializer.data)
 
     def post(self,request):
+
+        print(f'Inside get method post in StudentList')
+
         # We need to tell where our serializer will get data from?
         # data is an attribute of serializer
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class StudentDetail(APIView):
 
     # Since in Class Based View, we do not have a method like student_detail() in Function Based View
     # Below built-in method comes handy for us to grab the object based on Primary Key!
-    def get(self,request,pk):
+    def get(self, request, pk):
         # You can now use the get_object method above to grab the object!
         student = self.get_object(pk)
         serializer = StudentSerializer(student)
@@ -153,4 +159,4 @@ class StudentDetail(APIView):
             # You can simply raise the exception once you import it!
             # return Response(status=status.HTTP_404_NOT_FOUND)
             raise Http404
-'''
+
